@@ -12,6 +12,8 @@ export const loadAssets = () => {
         .add('card_sleep', 'assets/card_sleep.png')
         .add('titleTimerBg', 'assets/titleTimerBg.png')
         .add('avatar', 'assets/avatar.png')
+        .add('statFrames', 'assets/statFrames.png')
+        .add('avatarStatLabels', 'assets/avatarStatLabels.png')
         .load(() => {
           resolve()
         })
