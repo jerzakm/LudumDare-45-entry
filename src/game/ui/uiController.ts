@@ -18,22 +18,31 @@ export const makeGameUi = (jam: GameJam): Container => {
   makeStatBarLabels(gameUi)
   initStatBars(gameUi, player.skills, player.status, jam.playerGame)
   stage.addChild(gameUi)
+  stageScale()
   return gameUi
+}
+
+const stageScale = () => {
+  const x = window.innerWidth / stage.width
+  const y = window.innerHeight / stage.height
+  const scale = x > y ? x : y
+  stage.scale.x = scale
+  stage.scale.y = scale
 }
 
 const makeBackground = (container: Container) => {
   const bg = new Graphics()
   bg.beginFill(colorScheme.background)
-  bg.drawRect(0, 0, window.innerWidth, window.innerHeight)
+  bg.drawRect(0, 0, 1920, 1080)
   bg.endFill()
   const bgSuper = new Graphics()
   bgSuper.beginFill(colorScheme.background)
-  bgSuper.drawRect(window.innerWidth - 600, 0, 600, window.innerHeight)
+  bgSuper.drawRect(1920 - 600, 0, 600, 1080)
   bgSuper.endFill()
 
   const bgImage = Sprite.from(loader.resources['desk_night'].texture)
 
-  const scale = window.innerHeight / bgImage.height
+  const scale = 1080 / bgImage.height
   bgImage.scale.x = scale
   bgImage.scale.y = scale
 
@@ -110,13 +119,13 @@ const makeTimer = (container: Container, jam: GameJam) => {
 const makeAvatar = (container: Container) => {
   const avatar = Sprite.from(loader.resources['avatar'].texture)
   avatar.anchor.x = 1.0
-  avatar.position.x = window.innerWidth - 20
+  avatar.position.x = 1920 - 20
   avatar.position.y = 20
   container.addChild(avatar)
 
   const avatarStatLabels = Sprite.from(loader.resources['avatarStatLabels'].texture)
   avatarStatLabels.anchor.x = 0
-  avatarStatLabels.position.x = window.innerWidth - 600 + 20
+  avatarStatLabels.position.x = 1920 - 600 + 20
   avatarStatLabels.position.y = 30 + avatar.height / 4
   avatarStatLabels.scale.x = 1.6
   avatarStatLabels.scale.y = 1.6
@@ -132,7 +141,7 @@ const makeAvatar = (container: Container) => {
       wordWrapWidth: 300
     })
   timeLeftText.position.y = 50
-  timeLeftText.position.x = window.innerWidth - 300
+  timeLeftText.position.x = 1920 - 300
   timeLeftText.anchor.x = 1.0
   container.addChild(timeLeftText)
 }
@@ -140,7 +149,7 @@ const makeAvatar = (container: Container) => {
 const makeStatBarLabels = (container: Container) => {
   const frame = Sprite.from(loader.resources['statFrames'].texture)
   frame.anchor.x = 1.0
-  frame.x = window.innerWidth - 20
+  frame.x = 1920 - 20
   frame.y = 340
   container.addChild(frame)
 }
