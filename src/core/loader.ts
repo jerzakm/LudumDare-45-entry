@@ -9,6 +9,9 @@ export const loadAssets = () => {
       loader
         .add('desk_night', 'assets/desk_night.png')
         .add('ld_pixel_logo', 'assets/ld_pixel_logo.png')
+        .add('card_sleep', 'assets/card_sleep.png')
+        .add('titleTimerBg', 'assets/titleTimerBg.png')
+        .add('avatar', 'assets/avatar.png')
         .load(() => {
           resolve()
         })
