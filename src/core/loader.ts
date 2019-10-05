@@ -20,6 +20,8 @@ export const loadAssets = () => {
         .add('card_simplePhysics', 'assets/card_simplePhysics.png')
         .add('card_mechanicsBalancing', 'assets/card_mechanicsBalancing.png')
         .add('card_krazyIdea', 'assets/card_krazyIdea.png')
+        .add('another', 'assets/another.png')
+        .add('anotherHover', 'assets/anotherHover.png')
         .load(() => {
           resolve()
         })

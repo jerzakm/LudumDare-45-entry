@@ -9,3 +9,8 @@ export const cardPlayed = new Howl({
   src: ['assets/card_played.wav'],
   volume: 0.5
 })
+
+export const newGameSound = new Howl({
+  src: ['assets/newGame.wav'],
+  volume: 0.5
+})

@@ -9,9 +9,12 @@ import { stage } from "../core/renderer"
 import { drawCards as drawNewRound, Card, processCardEffect } from "./cards/cards"
 import { renderPlayerHand, cardMovementRender, cardMovementQueue } from "./cards/playerHand"
 import { cardPlayed } from "./sounds/cardSounds"
+import { jamEnd } from "./jam/jamEnd"
+import { ZoomBlurFilter } from "pixi-filters"
 
 let menu: Container
 let currentJam: GameJam
+let currentJamContainer: Container
 export let player: Player
 
 export let gameState: GameState
@@ -22,12 +25,12 @@ export const startGame = () => {
   return { gameLoop, renderLoop }
 }
 
-export const newGame = () => {
+export const newGame = (jamNumber = 45) => {
   menu.destroy()
-  currentJam = new GameJam()
-  makeGameUi(currentJam)
+  currentJam = new GameJam(jamNumber)
+  currentJamContainer = makeGameUi(currentJam)
   gameState = GameState.DRAWING
-  debug()
+  // debug()
 }
 
 const debug = () => {
@@ -56,6 +59,10 @@ const gameLoop = (delta: number) => {
       }
       break
     case GameState.RESOLUTION:
+      jamEnd(currentJam, player, currentJamContainer)
+      gameState = GameState.LIMBO
+      break
+    case GameState.LIMBO:
       break
   }
 }
@@ -88,5 +95,5 @@ export const playCard = (card: Card, sprite: Sprite) => {
 }
 
 export enum GameState {
-  DRAWING, PLAYING, EFFECTS, RESOLUTION
+  DRAWING, PLAYING, EFFECTS, RESOLUTION, LIMBO
 }

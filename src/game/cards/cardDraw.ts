@@ -10,7 +10,9 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
 
   let card: any = levelProcGen()
 
-  while (jam.timer < card.time) {
+  let rolled = false
+
+  while (jam.timer < card.time || !rolled) {
     if (random < tired) {
       card = tiredCards[Math.floor(Math.random() * tiredCards.length)]()
     } else {
@@ -20,6 +22,8 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
       card = practiceCards[Math.floor(Math.random() * practiceCards.length)]()
       jam.practiceRound -= 1
     }
+
+    rolled = true
   }
 
   //   console.log(
