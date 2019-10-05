@@ -6,8 +6,9 @@ import { Player } from "./player/Player"
 import { statUpdater } from "./ui/statBars"
 import { loader } from "../core/loader"
 import { stage } from "../core/renderer"
-import { drawCards, Card } from "./cards/cards"
+import { drawCards as drawNewRound, Card, processCardEffect } from "./cards/cards"
 import { renderPlayerHand, cardMovementRender, cardMovementQueue } from "./cards/playerHand"
+import { cardPlayed } from "./sounds/cardSounds"
 
 let menu: Container
 let currentJam: GameJam
@@ -38,6 +39,14 @@ const gameLoop = (delta: number) => {
     case GameState.PLAYING:
       break
     case GameState.EFFECTS:
+      if (currentJam.timer <= 0) {
+        gameState = GameState.RESOLUTION
+      } else if (cardMovementQueue.length > 0) {
+
+      }
+      else {
+        gameState = GameState.DRAWING
+      }
       break
     case GameState.RESOLUTION:
       break
@@ -52,7 +61,7 @@ const renderLoop = (delta: number) => {
 }
 
 const newDraw = () => {
-  currentJam.playerHand = drawCards(player.status, currentJam)
+  currentJam.playerHand = drawNewRound(player.status, currentJam)
 }
 
 export const playCard = (card: Card, sprite: Sprite) => {
@@ -65,6 +74,10 @@ export const playCard = (card: Card, sprite: Sprite) => {
     },
     destroy: true
   })
+  processCardEffect(card, player, currentJam)
+  cardPlayed.play()
+
+  gameState = GameState.EFFECTS
 }
 
 export enum GameState {

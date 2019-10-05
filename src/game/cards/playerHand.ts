@@ -5,13 +5,14 @@ import { cardContainer } from "../ui/uiController";
 import { GlowFilter } from 'pixi-filters'
 import { gameState, GameState, playCard } from "../game";
 import { Vector } from "matter-js";
+import { cardHover } from "../sounds/cardSounds";
 
 export const renderPlayerHand = (jam: GameJam) => {
   let i = 0;
 
   while (i < jam.playerHand.length) {
-    const gameCard = jam.playerHand[i]
-    const sprite = Sprite.from(loader.resources[gameCard.sprite].texture)
+    const card = jam.playerHand[i]
+    const sprite = jam.playerHand[i].sprite
     cardContainer.addChild(sprite)
     sprite.position.x = ((i) * sprite.width * 0.7) + 30 * (i) + 40 + sprite.width / 2
     sprite.anchor.x = 0.5
@@ -34,6 +35,7 @@ export const renderPlayerHand = (jam: GameJam) => {
         sprite.scale.y = 1.3
         sprite.zIndex = 9000
       }
+      cardHover.play()
     })
     sprite.on('pointerout', () => {
       sprite.zIndex = previousZ
@@ -44,7 +46,7 @@ export const renderPlayerHand = (jam: GameJam) => {
 
     sprite.on('pointerdown', () => {
       if (gameState == GameState.PLAYING) {
-        playCard(gameCard, sprite)
+        playCard(card, sprite)
       }
     })
   }

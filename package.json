@@ -10,7 +10,9 @@
     "start": "concurrently \"npm:webpack\" \"npm:bs\""
   },
   "dependencies": {
+    "@types/howler": "^2.1.1",
     "color": "^3.1.2",
+    "howler": "^2.1.2",
     "matter-js": "^0.14.2",
     "pixi-filters": "^3.0.3",
     "pixi.js": "^5.0.0-rc.2",

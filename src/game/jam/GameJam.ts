@@ -7,6 +7,7 @@ export class GameJam {
   playerGame: PlayerGameStats
   playerHand: Card[]
   playedCards: Card[]
+  practiceRound = 3
 
 
   constructor() {
