@@ -1,7 +1,7 @@
 import { initMenu } from "./menu"
 import { Container, Sprite } from "pixi.js"
 import { GameJam } from "./jam/GameJam"
-import { makeGameUi } from "./ui/uiController"
+import { makeGameUi, updateTimeLeftCounter } from "./ui/uiController"
 import { Player } from "./player/Player"
 import { statUpdater } from "./ui/statBars"
 import { loader } from "../core/loader"
@@ -27,6 +27,13 @@ export const newGame = () => {
   currentJam = new GameJam()
   makeGameUi(currentJam)
   gameState = GameState.DRAWING
+  debug()
+}
+
+const debug = () => {
+  currentJam.timer = 60
+  currentJam.practiceRound = 0
+  updateTimeLeftCounter(currentJam)
 }
 
 const gameLoop = (delta: number) => {

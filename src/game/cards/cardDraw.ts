@@ -8,24 +8,25 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
 
   const tired = ((20 - (player.status.health + player.status.energy)) ** 2) / 20
 
-  let card: any = practiceCards[0]()
+  let card: any = levelProcGen()
 
-  if (jam.practiceRound > 0) {
-    card = practiceCards[Math.floor(Math.random() * practiceCards.length)]()
-    jam.practiceRound--
+  while (jam.timer < card.time) {
+    if (random < tired) {
+      card = tiredCards[Math.floor(Math.random() * tiredCards.length)]()
+    } else {
+      card = gameMakingCards[Math.floor(Math.random() * gameMakingCards.length)]()
+    }
+    if (jam.practiceRound > 0) {
+      card = practiceCards[Math.floor(Math.random() * practiceCards.length)]()
+      jam.practiceRound -= 1
+    }
   }
-  else if (random < tired) {
-    card = tiredCards[Math.floor(Math.random() * tiredCards.length)]()
-  } else {
-    card = gameMakingCards[Math.floor(Math.random() * gameMakingCards.length)]()
-  }
 
-
-  console.log(
-    `rnd: ${random}
-tired: ${tired}
-practiceRnd: ${jam.practiceRound}
-  `)
+  //   console.log(
+  //     `rnd: ${random}
+  // tired: ${tired}
+  // practiceRnd: ${jam.practiceRound}
+  //   `)
 
   return card
 }
