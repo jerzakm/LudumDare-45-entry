@@ -7,6 +7,7 @@ import { player } from "../game";
 import { initStatBars } from "./statBars";
 
 export let timeLeftCounter: Text
+export let cardContainer: Container
 
 export const makeGameUi = (jam: GameJam): Container => {
   const gameUi = new Container()
@@ -17,9 +18,16 @@ export const makeGameUi = (jam: GameJam): Container => {
   makeAvatar(gameUi)
   makeStatBarLabels(gameUi)
   initStatBars(gameUi, player.skills, player.status, jam.playerGame)
+  initCardContainer(gameUi)
   stage.addChild(gameUi)
   stageScale()
   return gameUi
+}
+
+const initCardContainer = (container: Container) => {
+  cardContainer = new Container()
+  cardContainer.sortableChildren = true
+  container.addChild(cardContainer)
 }
 
 const stageScale = () => {

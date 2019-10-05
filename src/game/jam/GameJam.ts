@@ -1,8 +1,13 @@
+import { Card } from "../cards/cards"
+
 export class GameJam {
   theme: string
   number: number
   timer: number
   playerGame: PlayerGameStats
+  playerHand: Card[]
+  playedCards: Card[]
+
 
   constructor() {
     this.theme = themeSelector()
@@ -17,6 +22,9 @@ export class GameJam {
       sound: 0,
       innovation: 0
     }
+
+    this.playerHand = []
+    this.playedCards = []
   }
 }
 

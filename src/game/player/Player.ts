@@ -1,7 +1,10 @@
+import { Card } from "../cards/cards"
+
 export class Player {
   name: string
   skills: PlayerSkills
   status: PlayerStatus
+
 
   constructor(name: string, skills = defaultPlayerSkills()) {
     this.name = name
@@ -17,12 +20,12 @@ export class Player {
 
 const defaultPlayerSkills = (): PlayerSkills => {
   return {
-    gameDesign: 3,
-    coding: 3,
-    art: 3,
-    sound: 3,
-    popularity: 3,
-    organization: 3
+    gameDesign: 0,
+    coding: 0,
+    art: 0,
+    sound: 0,
+    popularity: 0,
+    organization: 0
   }
 }
 
