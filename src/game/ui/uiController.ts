@@ -5,6 +5,7 @@ import { stage } from "../../core/renderer";
 import { loader } from "../../core/loader";
 import { player } from "../game";
 import { initStatBars } from "./statBars";
+import { DropShadowFilter } from "pixi-filters";
 
 export let timeLeftCounter: Text
 export let cardContainer: Container
@@ -47,6 +48,12 @@ const makeBackground = (container: Container) => {
   bgSuper.beginFill(colorScheme.background)
   bgSuper.drawRect(1920 - 600, 0, 600, 1080)
   bgSuper.endFill()
+
+  bgSuper.beginFill(0x70A5D4)
+  bgSuper.drawRect(1920 - 600, 0, 8, 1080)
+  bgSuper.endFill()
+
+  bgSuper.filters = [new DropShadowFilter({ blur: 8, alpha: 0.6, distance: 10, rotation: 90 })]
 
   const bgImage = Sprite.from(loader.resources['desk_night'].texture)
 

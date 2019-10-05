@@ -1,4 +1,4 @@
-import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea } from "./cardList"
+import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, joinCommunity, meaningOfLife, characterArt, happyTrees, marieCondo } from "./cardList"
 import { Player } from "../player/Player"
 import { GameJam } from "../jam/GameJam"
 import { Card } from "./cards"
@@ -37,5 +37,5 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
 
 
 const tiredCards: any[] = [sleepCard]
-const practiceCards: any[] = [pixelPractice, soundPractice]
-const gameMakingCards: any[] = [levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea]
+const practiceCards: any[] = [pixelPractice, soundPractice, joinCommunity]
+const gameMakingCards: any[] = [levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, meaningOfLife, characterArt, happyTrees, marieCondo]

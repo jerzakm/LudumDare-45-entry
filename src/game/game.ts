@@ -84,7 +84,7 @@ export const playCard = (card: Card, sprite: Sprite) => {
     sprite: sprite,
     to: {
       position: { x: 600, y: 500 },
-      scale: { x: 0.5, y: 0.5 }
+      scale: { x: 0.5, y: 0.35 }
     },
     destroy: true
   })

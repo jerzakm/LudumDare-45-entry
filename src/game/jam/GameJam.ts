@@ -8,7 +8,7 @@ export class GameJam {
   playerGame: PlayerGameStats
   playerHand: Card[]
   playedCards: Card[]
-  practiceRound = 3
+  practiceRound = 5
 
 
   constructor(number = 45) {
@@ -32,7 +32,7 @@ export class GameJam {
   private selectTheme = () => {
     let theme = 'Start with nothing'
 
-    if (this.number != 45) {
+    if (this.number > 45) {
       theme = jamNameList[Math.floor(Math.random() * jamNameList.length)]
     }
     return theme

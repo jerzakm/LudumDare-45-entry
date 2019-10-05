@@ -2,7 +2,7 @@ import { Sprite } from "pixi.js";
 import { loader } from "../../core/loader";
 import { GameJam } from "../jam/GameJam";
 import { cardContainer } from "../ui/uiController";
-import { GlowFilter } from 'pixi-filters'
+import { GlowFilter, DropShadowFilter } from 'pixi-filters'
 import { gameState, GameState, playCard } from "../game";
 import { Vector } from "matter-js";
 import { cardHover } from "../sounds/cardSounds";
@@ -18,6 +18,8 @@ export const renderPlayerHand = (jam: GameJam) => {
     sprite.anchor.x = 0.5
     sprite.anchor.y = 1
     sprite.zIndex = i
+
+    sprite.filters = [new DropShadowFilter({ blur: 8, alpha: 0.6, distance: 10, rotation: 220 })]
 
     const oy = 1000
     sprite.position.y = oy
@@ -62,16 +64,13 @@ export const cardMovementRender = (delta: number) => {
     if (to.position) {
       s.position.x = s.position.x + (to.position.x - s.position.x) / 50
       s.position.y = s.position.y + (to.position.y - s.position.y) / 30
-      if ((Math.abs(s.position.x - to.position.x) < 4) && Math.abs(s.position.y - to.position.y) < 4) {
+      if ((Math.abs(s.position.x - to.position.x) < 18) && Math.abs(s.position.y - to.position.y) < 18) {
         animDone = true
       }
     }
     if (to.scale) {
       s.scale.x = s.scale.x + (to.scale.x - s.scale.x) / 20
       s.scale.y = s.scale.y + (to.scale.y - s.scale.y) / 20
-      if ((Math.abs(s.scale.x - to.scale.x) < 2) && Math.abs(s.scale.y - to.scale.y) < 2 && animDone) {
-        animDone = true
-      } else animDone = false
     }
 
     if (animDone) {
