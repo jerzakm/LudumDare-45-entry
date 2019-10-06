@@ -3,7 +3,7 @@ import { jamNameList } from "./jamNameList"
 
 export class GameJam {
   theme: string
-  number: number
+  number = 45
   timer: number
   playerGame: PlayerGameStats
   playerHand: Card[]
@@ -13,9 +13,9 @@ export class GameJam {
 
 
   constructor(number = 45) {
-    this.theme = this.selectTheme()
     this.number = number
     this.timer = 48 * 60
+    this.theme = this.selectTheme()
 
     this.playerGame = {
       playable: 0,
@@ -32,9 +32,10 @@ export class GameJam {
 
   private selectTheme = () => {
     let theme = 'Start with nothing'
-
+    console.log(this.number)
     if (this.number > 45) {
       theme = jamNameList[Math.floor(Math.random() * jamNameList.length)]
+      console.log(theme)
     }
     return theme
   }
