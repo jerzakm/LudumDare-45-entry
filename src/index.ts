@@ -3,6 +3,7 @@ import * as Stats from 'stats.js'
 import { renderer, initRenderer, ticker } from "./core/renderer"
 import { loadAssets } from "./core/loader"
 import { startGame, newGame } from "./game/game"
+import { theme } from "./game/sounds/cardSounds"
 
 
 
@@ -14,6 +15,7 @@ const initialize = async () => {
   await loadAssets()
   const game = startGame()
   newGame()
+  theme.play()
 
   ticker.add((delta) => {
     stats.begin()

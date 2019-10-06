@@ -1,4 +1,4 @@
-import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, joinCommunity, meaningOfLife, characterArt, happyTrees, marieCondo, makeNoise, walkInAPark, askAFriend } from "./cardList"
+import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, joinCommunity, meaningOfLife, characterArt, happyTrees, marieCondo, makeNoise, walkInAPark, askAFriend, takeANap, kevinDialogue, quillCard, sheSaid, cardTiled, cardRelease } from "./cardList"
 import { Player } from "../player/Player"
 import { GameJam } from "../jam/GameJam"
 import { Card } from "./cards"
@@ -26,19 +26,17 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
     rolled = true
   }
 
-  //   console.log(
-  //     `rnd: ${random}
-  // tired: ${tired}
-  // practiceRnd: ${jam.practiceRound}
-  //   `)
+  if (player.status.health < 1 || player.status.energy < 1) {
+    card = sleepCard()
+  }
 
   return card
 }
 
 
-const tiredCards: any[] = [sleepCard]
+const tiredCards: any[] = [sleepCard, takeANap, walkInAPark]
 const practiceCards: any[] = [pixelPractice, soundPractice, joinCommunity]
 const gameMakingCards: any[] = [
   levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, meaningOfLife, characterArt, happyTrees, marieCondo,
-  makeNoise, walkInAPark, askAFriend
+  makeNoise, walkInAPark, askAFriend, kevinDialogue, quillCard, sheSaid, cardTiled, cardRelease
 ]

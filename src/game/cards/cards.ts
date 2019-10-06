@@ -16,6 +16,7 @@ export class Card {
   gameStatus: PlayerGameStats
   time: number
   prompts?: string[]
+  release?: boolean
 
   constructor(sprite: string) {
     this.sprite = Sprite.from(loader.resources[`${sprite}`].texture)

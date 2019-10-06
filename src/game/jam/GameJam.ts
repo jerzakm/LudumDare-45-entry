@@ -9,6 +9,7 @@ export class GameJam {
   playerHand: Card[]
   playedCards: Card[]
   practiceRound = 5
+  releaseReady = false
 
 
   constructor(number = 45) {
