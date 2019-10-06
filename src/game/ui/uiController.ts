@@ -72,6 +72,8 @@ const makeTitle = (container: Container, jam: GameJam) => {
   s.scale.y = 2
   s.position.x = 20
   s.position.y = 10
+
+  s.filters = [new DropShadowFilter()]
   container.addChild(s)
 
 
@@ -165,7 +167,7 @@ const makeStatBarLabels = (container: Container) => {
   const frame = Sprite.from(loader.resources['statFrames'].texture)
   frame.anchor.x = 1.0
   frame.x = 1920 - 20
-  frame.y = 340
+  frame.y = 290
   container.addChild(frame)
 }
 

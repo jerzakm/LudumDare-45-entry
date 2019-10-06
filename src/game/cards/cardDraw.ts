@@ -34,13 +34,12 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
   if (jam.timer <= 240) {
     let release = false
     for (const card of jam.playerHand) {
-      console.log(card)
+
       if (card.release) {
         release = true
       }
     }
     release ? false : card = cardRelease()
-    console.log(release)
     if (jam.timer <= 30) {
       card = cardRelease()
     }

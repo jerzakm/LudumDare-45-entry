@@ -34,7 +34,7 @@ export const newGame = (jamNumber = 45) => {
 }
 
 const debug = () => {
-  currentJam.timer = 60
+  currentJam.timer = 240
   currentJam.practiceRound = 0
   updateTimeLeftCounter(currentJam)
 }
@@ -83,7 +83,7 @@ export const playCard = (card: Card, sprite: Sprite) => {
   cardMovementQueue.push({
     sprite: sprite,
     to: {
-      position: { x: 600, y: 500 },
+      position: { x: 600, y: 400 },
       scale: { x: 0.5, y: 0.35 }
     },
     destroy: true

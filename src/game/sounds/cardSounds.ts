@@ -22,6 +22,6 @@ export const newJamHover = new Howl({
 
 export const theme = new Howl({
   src: ['assets/theme.wav'],
-  volume: 0.0,
+  volume: 0.3,
   loop: true
 })

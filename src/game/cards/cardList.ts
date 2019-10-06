@@ -174,7 +174,7 @@ export const quillCard = () => {
 
 export const sheSaid = () => {
   const card = new Card('card_sheSaid')
-  card.gameStatus.fun = Math.random() > 0.5 ? Math.random() * 3 : Math.random() * -2
+  card.gameStatus.fun = Math.random() > 0.35 ? Math.random() * 3 : Math.random() * -2
   card.playerSkills.gameDesign = 0.05
   card.playerSkills.popularity = 0.05
   card.playerStatus.mind = 1

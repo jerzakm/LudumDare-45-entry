@@ -69,7 +69,6 @@ const discardOldHand = (jam: GameJam) => {
 }
 
 export const processCardEffect = (card: Card, player: Player, jam: GameJam) => {
-  console.log(card)
   if (card.gameStatus) {
     jam.playerGame.fun += card.gameStatus.fun
     jam.playerGame.graphics += card.gameStatus.graphics
@@ -120,6 +119,4 @@ export const processCardEffect = (card: Card, player: Player, jam: GameJam) => {
     jam.releaseReady = true
     jam.timer = 0
   }
-
-  console.log(jam)
 }
