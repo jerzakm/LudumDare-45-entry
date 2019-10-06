@@ -21,7 +21,7 @@ export let gameState: GameState
 
 export const startGame = () => {
   menu = initMenu()
-  player = new Player('Marcin Jerzak')
+  player = new Player('Martin')
   return { gameLoop, renderLoop }
 }
 
@@ -30,14 +30,13 @@ export const newGame = (jamNumber = 45) => {
   currentJam = new GameJam(jamNumber)
   currentJamContainer = makeGameUi(currentJam)
   gameState = GameState.DRAWING
-
   // debug()
 }
 
 const debug = () => {
   currentJam.timer = 60
   currentJam.practiceRound = 0
-  updateTimeLeftCounter(currentJam)
+  // updateTimeLeftCounter(currentJam)
   currentJam.playerGame.fun = Math.random() * 10
   currentJam.playerGame.graphics = Math.random() * 10
   currentJam.playerGame.innovation = Math.random() * 10
@@ -97,6 +96,7 @@ const newDraw = () => {
 }
 
 export const playCard = (card: Card, sprite: Sprite) => {
+  console.log(card)
   sprite.interactive = false
   cardMovementQueue.push({
     sprite: sprite,
@@ -116,7 +116,12 @@ export const playCard = (card: Card, sprite: Sprite) => {
     player.status.energy -= Math.random() * (card.time / 35)
     player.status.health -= Math.random() * (card.time / 60)
   }
-  gameState = GameState.EFFECTS
+
+  if (card.release) {
+    gameState = GameState.RESOLUTION
+  } else {
+    gameState = GameState.EFFECTS
+  }
 }
 
 export enum GameState {

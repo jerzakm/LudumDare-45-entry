@@ -196,12 +196,22 @@ export const cardRelease = () => {
   card.gameStatus.playable = Math.random()
   card.time = 30
   card.release = true
+  console.log(card)
   return card
 }
 
 export const cardBroccoli = () => {
-  const card = new Card('card_release')
+  const card = new Card('card_broccoli')
   card.playerStatus.health = 4
   card.time = 60
+  return card
+}
+
+export const cardCommunity = () => {
+  const card = new Card('card_ldCommunity')
+  card.playerSkills.popularity = Math.random()
+  card.gameStatus.theme = Math.random() * 0.7
+  card.playerStatus.mind = 0.2
+  card.time = 30
   return card
 }

@@ -24,5 +24,4 @@ const initialize = async () => {
     stats.end()
   })
 }
-
 initialize()
