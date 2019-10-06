@@ -1,4 +1,4 @@
-import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, joinCommunity, meaningOfLife, characterArt, happyTrees, marieCondo, makeNoise, walkInAPark, askAFriend, takeANap, kevinDialogue, quillCard, sheSaid, cardTiled, cardRelease } from "./cardList"
+import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, joinCommunity, meaningOfLife, characterArt, happyTrees, marieCondo, makeNoise, walkInAPark, askAFriend, takeANap, kevinDialogue, quillCard, sheSaid, cardTiled, cardRelease, cardBroccoli } from "./cardList"
 import { Player } from "../player/Player"
 import { GameJam } from "../jam/GameJam"
 import { Card } from "./cards"
@@ -17,6 +17,7 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
       card = tiredCards[Math.floor(Math.random() * tiredCards.length)]()
     } else {
       card = gameMakingCards[Math.floor(Math.random() * gameMakingCards.length)]()
+
     }
     if (jam.practiceRound > 0) {
       card = practiceCards[Math.floor(Math.random() * practiceCards.length)]()
@@ -30,6 +31,21 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
     card = sleepCard()
   }
 
+  if (jam.timer <= 240) {
+    let release = false
+    for (const card of jam.playerHand) {
+      console.log(card)
+      if (card.release) {
+        release = true
+      }
+    }
+    release ? false : card = cardRelease()
+    console.log(release)
+    if (jam.timer <= 30) {
+      card = cardRelease()
+    }
+  }
+
   return card
 }
 
@@ -38,5 +54,5 @@ const tiredCards: any[] = [sleepCard, takeANap, walkInAPark]
 const practiceCards: any[] = [pixelPractice, soundPractice, joinCommunity]
 const gameMakingCards: any[] = [
   levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, meaningOfLife, characterArt, happyTrees, marieCondo,
-  makeNoise, walkInAPark, askAFriend, kevinDialogue, quillCard, sheSaid, cardTiled, cardRelease
+  makeNoise, walkInAPark, askAFriend, kevinDialogue, quillCard, sheSaid, cardTiled, cardBroccoli
 ]

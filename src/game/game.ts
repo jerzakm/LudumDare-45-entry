@@ -30,7 +30,7 @@ export const newGame = (jamNumber = 45) => {
   currentJam = new GameJam(jamNumber)
   currentJamContainer = makeGameUi(currentJam)
   gameState = GameState.DRAWING
-  // debug()
+  debug()
 }
 
 const debug = () => {
@@ -75,7 +75,7 @@ const renderLoop = (delta: number) => {
 }
 
 const newDraw = () => {
-  currentJam.playerHand = drawNewRound(player.status, currentJam)
+  drawNewRound(player.status, currentJam)
 }
 
 export const playCard = (card: Card, sprite: Sprite) => {
@@ -88,12 +88,16 @@ export const playCard = (card: Card, sprite: Sprite) => {
     },
     destroy: true
   })
-  processCardEffect(card, player, currentJam)
   cardPlayed.play()
+  processCardEffect(card, player, currentJam)
 
-  player.status.mind -= 0.7 * Math.random()
-  player.status.energy -= Math.random()
-  player.status.health -= Math.random()
+  if (card.playerStatus.energy > 0 || card.playerStatus.health > 0) {
+
+  } else {
+    player.status.mind -= Math.random() * (card.time / 20)
+    player.status.energy -= Math.random() * (card.time / 35)
+    player.status.health -= Math.random() * (card.time / 60)
+  }
 
   gameState = GameState.EFFECTS
 }

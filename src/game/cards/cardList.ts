@@ -173,7 +173,7 @@ export const quillCard = () => {
 }
 
 export const sheSaid = () => {
-  const card = new Card('card_quill')
+  const card = new Card('card_sheSaid')
   card.gameStatus.fun = Math.random() > 0.5 ? Math.random() * 3 : Math.random() * -2
   card.playerSkills.gameDesign = 0.05
   card.playerSkills.popularity = 0.05
@@ -183,7 +183,7 @@ export const sheSaid = () => {
 }
 
 export const cardTiled = () => {
-  const card = new Card('card_quill')
+  const card = new Card('card_tiled')
   card.playerSkills.gameDesign = Math.random() * 0.3
   card.gameStatus.graphics = Math.random()
   card.gameStatus.playable = Math.random() * 2
@@ -192,11 +192,16 @@ export const cardTiled = () => {
 }
 
 export const cardRelease = () => {
-  const card = new Card('card_quill')
+  const card = new Card('card_release')
   card.gameStatus.playable = Math.random()
   card.time = 30
   card.release = true
   return card
 }
 
-//card_tiled
+export const cardBroccoli = () => {
+  const card = new Card('card_release')
+  card.playerStatus.health = 4
+  card.time = 60
+  return card
+}

@@ -53,6 +53,7 @@ export const drawCards = (playerStatus: PlayerStatus, jam: GameJam) => {
   while (drawnHand.length < MAX_CARDS) {
     const card = drawNewCard(player, jam)
     drawnHand.push(card)
+    jam.playerHand.push(card)
   }
 
   return drawnHand
@@ -76,6 +77,13 @@ export const processCardEffect = (card: Card, player: Player, jam: GameJam) => {
     jam.playerGame.playable += card.gameStatus.playable
     jam.playerGame.sound += card.gameStatus.sound
     jam.playerGame.theme += card.gameStatus.theme
+
+    jam.playerGame.fun >= 10 ? jam.playerGame.fun = 10 : false
+    jam.playerGame.graphics >= 10 ? jam.playerGame.graphics = 10 : false
+    jam.playerGame.innovation >= 10 ? jam.playerGame.innovation = 10 : false
+    jam.playerGame.playable >= 10 ? jam.playerGame.playable = 10 : false
+    jam.playerGame.sound >= 10 ? jam.playerGame.sound = 10 : false
+    jam.playerGame.theme >= 10 ? jam.playerGame.theme = 10 : false
   }
 
   if (card.playerSkills) {
@@ -85,6 +93,13 @@ export const processCardEffect = (card: Card, player: Player, jam: GameJam) => {
     player.skills.organization += card.playerSkills.organization
     player.skills.popularity += card.playerSkills.popularity
     player.skills.sound += card.playerSkills.sound
+
+    player.skills.art >= 10 ? player.skills.art = 10 : false
+    player.skills.coding >= 10 ? player.skills.coding = 10 : false
+    player.skills.gameDesign >= 10 ? player.skills.gameDesign = 10 : false
+    player.skills.organization >= 10 ? player.skills.organization = 10 : false
+    player.skills.popularity >= 10 ? player.skills.popularity = 10 : false
+    player.skills.sound >= 10 ? player.skills.sound = 10 : false
   }
 
   if (card.playerStatus) {
@@ -99,6 +114,11 @@ export const processCardEffect = (card: Card, player: Player, jam: GameJam) => {
   if (card.time) {
     jam.timer -= card.time
     updateTimeLeftCounter(jam)
+  }
+
+  if (card.release) {
+    jam.releaseReady = true
+    jam.timer = 0
   }
 
   console.log(jam)
