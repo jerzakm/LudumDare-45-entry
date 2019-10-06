@@ -89,7 +89,7 @@ const jamResolution = (player: Player, jam: GameJam) => {
   const playerScore: JamEndScore = {
     contestants: contestants,
     peopleVoted: Math.max(10, Math.floor(contestants * 0.01 + Math.random() * player.skills.popularity * 10)),
-    innovation: Math.min(((player.skills.gameDesign + player.skills.coding) * gs.innovation) / 18, 10),
+    innovation: Math.min((player.skills.gameDesign + gs.innovation * 2 + player.skills.coding) / 3.7, 10),
     fun: (gs.fun + gs.playable) / 2,
     theme: (gs.theme + player.skills.organization) / 2,
     graphics: Math.min((gs.graphics + player.skills.art + player.skills.organization / 2) / 2.2, 10),
@@ -154,21 +154,21 @@ const genAndCompareNpcScores = (qty: number, playerScore: JamEndScore) => {
 
   for (let i = 0; i < qty; i++) {
     const gs: PlayerGameStats = {
-      fun: Math.random() * 10,
-      graphics: Math.random() * 10,
-      innovation: Math.random() * 10,
-      playable: Math.random() * 10,
-      sound: Math.random() * 10,
-      theme: Math.random() * 10
+      fun: Math.random() * 9,
+      graphics: Math.random() * 9,
+      innovation: Math.random() * 9,
+      playable: Math.random() * 9,
+      sound: Math.random() * 9,
+      theme: Math.random() * 9
     }
 
     const player = new Player(`npc${i}`)
-    player.skills.art = Math.random() * 9
-    player.skills.coding = Math.random() * 9
+    player.skills.art = Math.random() * 8
+    player.skills.coding = Math.random() * 8
     player.skills.gameDesign = Math.random() * 9
-    player.skills.organization = Math.random() * 9
-    player.skills.popularity = Math.random() * 9
-    player.skills.sound = Math.random() * 9
+    player.skills.organization = Math.random() * 8
+    player.skills.popularity = Math.random() * 8
+    player.skills.sound = Math.random() * 8
 
     player.status.energy = Math.random() * 6
     player.status.health = Math.random() * 6
@@ -176,7 +176,7 @@ const genAndCompareNpcScores = (qty: number, playerScore: JamEndScore) => {
     const playerScore: JamEndScore = {
       contestants: 0,
       peopleVoted: 0,
-      innovation: ((player.skills.gameDesign + player.skills.coding) * gs.innovation) / 20,
+      innovation: ((player.skills.gameDesign + player.skills.coding) + gs.innovation * 3) / 5,
       fun: (gs.fun + gs.playable) / 2,
       theme: (gs.theme + player.skills.organization) / 2,
       graphics: (gs.graphics + player.skills.art + player.skills.organization / 2) / 2.5,
@@ -231,10 +231,6 @@ const genAndCompareNpcScores = (qty: number, playerScore: JamEndScore) => {
 
   scores.sort((a, b) => a.overall > b.overall ? -1 : 1)
   playerPlace.overall = scores.findIndex(o => o == playerScore) + 1
-
-
-  console.log(scores)
-  console.log(playerPlace)
 
   return playerPlace
 }

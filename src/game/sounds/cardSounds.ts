@@ -5,6 +5,11 @@ export const cardHover = new Howl({
   volume: 0.3
 })
 
+export const statTickSound = new Howl({
+  src: ['assets/statTick.wav'],
+  volume: 0.1
+})
+
 export const cardPlayed = new Howl({
   src: ['assets/card_played.wav'],
   volume: 0.45

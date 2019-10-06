@@ -41,6 +41,7 @@ export const loadAssets = () => {
         .add('card_release', 'assets/card_release.png')
         .add('card_broccoli', 'assets/card_broccoli.png')
         .add('card_ldCommunity', 'assets/card_ldCommunity.png')
+        .add('card_plate', 'assets/card_plate.png')
         .load(() => {
           resolve()
         })

@@ -21,7 +21,7 @@ export let gameState: GameState
 
 export const startGame = () => {
   menu = initMenu()
-  player = new Player('Martin')
+  player = new Player('')
   return { gameLoop, renderLoop }
 }
 
@@ -86,7 +86,7 @@ const gameLoop = (delta: number) => {
 
 const renderLoop = (delta: number) => {
   if (statUpdater) {
-    statUpdater()
+    statUpdater(delta)
   }
   cardMovementRender(delta)
 }
@@ -96,7 +96,6 @@ const newDraw = () => {
 }
 
 export const playCard = (card: Card, sprite: Sprite) => {
-  console.log(card)
   sprite.interactive = false
   cardMovementQueue.push({
     sprite: sprite,

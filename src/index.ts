@@ -14,7 +14,6 @@ const initialize = async () => {
   initRenderer()
   await loadAssets()
   const game = startGame()
-  // newGame()
   theme.play()
 
   ticker.add((delta) => {

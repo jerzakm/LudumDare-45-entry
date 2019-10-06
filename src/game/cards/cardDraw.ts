@@ -1,4 +1,4 @@
-import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, joinCommunity, meaningOfLife, characterArt, happyTrees, marieCondo, makeNoise, walkInAPark, askAFriend, takeANap, kevinDialogue, quillCard, sheSaid, cardTiled, cardRelease, cardBroccoli } from "./cardList"
+import { sleepCard, pixelPractice, soundPractice, levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, joinCommunity, meaningOfLife, characterArt, happyTrees, marieCondo, makeNoise, walkInAPark, askAFriend, takeANap, kevinDialogue, quillCard, sheSaid, cardTiled, cardRelease, cardBroccoli, cardJoe, cardPlate, make3dModels } from "./cardList"
 import { Player } from "../player/Player"
 import { GameJam } from "../jam/GameJam"
 import { Card } from "./cards"
@@ -49,9 +49,9 @@ export const drawNewCard = (player: Player, jam: GameJam) => {
 }
 
 
-const tiredCards: any[] = [sleepCard, takeANap, walkInAPark]
+const tiredCards: any[] = [sleepCard, takeANap, walkInAPark, cardJoe]
 const practiceCards: any[] = [pixelPractice, soundPractice, joinCommunity]
 const gameMakingCards: any[] = [
   levelProcGen, simplePhysics, mechanicsBalancing, krazyIdea, meaningOfLife, characterArt, happyTrees, marieCondo,
-  makeNoise, walkInAPark, askAFriend, kevinDialogue, quillCard, sheSaid, cardTiled, cardBroccoli
+  makeNoise, walkInAPark, askAFriend, kevinDialogue, quillCard, sheSaid, cardTiled, cardBroccoli, cardJoe, cardPlate, make3dModels
 ]

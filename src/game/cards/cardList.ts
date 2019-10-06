@@ -24,9 +24,9 @@ export const soundPractice = () => {
 
 export const levelProcGen = () => {
   const card = new Card('card_levelGen')
-  card.gameStatus.innovation = Math.floor(Math.random() * 2)
-  card.gameStatus.playable = Math.floor(Math.random() * 1)
-  card.playerSkills.coding += 0.15 * Math.random()
+  card.gameStatus.innovation = Math.floor(Math.random() * 2) + 0.5
+  card.gameStatus.playable = Math.floor(Math.random() * 1) + 0.3
+  card.playerSkills.coding += 0.2 * Math.random()
   card.time = 240
   return card
 }
@@ -143,6 +143,7 @@ export const takeANap = () => {
 export const cardJoe = () => {
   const card = new Card('card_joe')
   card.playerStatus.energy = 1
+  card.playerSkills.organization += 0.3
   card.time = 30
   return card
 }
@@ -196,7 +197,6 @@ export const cardRelease = () => {
   card.gameStatus.playable = Math.random()
   card.time = 30
   card.release = true
-  console.log(card)
   return card
 }
 
@@ -213,5 +213,15 @@ export const cardCommunity = () => {
   card.gameStatus.theme = Math.random() * 0.7
   card.playerStatus.mind = 0.2
   card.time = 30
+  return card
+}
+
+export const cardPlate = () => {
+  const card = new Card('card_plate')
+  card.playerStatus.health = 1
+  card.playerStatus.energy = 1
+  card.gameStatus.sound = 1
+  card.playerSkills.sound += 0.1
+  card.time = 60
   return card
 }
