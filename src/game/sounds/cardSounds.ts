@@ -14,3 +14,8 @@ export const newGameSound = new Howl({
   src: ['assets/newGame.wav'],
   volume: 0.5
 })
+
+export const newJamHover = new Howl({
+  src: ['assets/newJamHover.wav'],
+  volume: 0.5
+})

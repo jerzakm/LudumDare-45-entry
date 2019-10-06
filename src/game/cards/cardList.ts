@@ -98,4 +98,28 @@ export const happyTrees = () => {
   return card
 }
 
-//card_characterArt
+export const makeNoise = () => {
+  const card = new Card('card_makeNoise')
+  card.gameStatus.sound = Math.random()
+  card.playerSkills.sound = Math.random() ** 4
+  card.time = 60
+  return card
+}
+
+export const walkInAPark = () => {
+  const card = new Card('card_walkInAPark')
+  card.playerStatus.mind = 2 + Math.random() * 2
+  card.gameStatus.theme = (Math.random() ** 1.5) * 3
+  card.playerSkills.organization = Math.random() * 0.5
+  card.time = 60
+  return card
+}
+
+export const askAFriend = () => {
+  const card = new Card('card_askFriend')
+  card.gameStatus.theme = Math.random() * 2
+  card.playerSkills.popularity = Math.random() * 0.2
+  card.playerStatus.mind = Math.random() * 0.4
+  card.time = 60
+  return card
+}

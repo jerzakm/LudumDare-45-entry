@@ -91,6 +91,10 @@ export const playCard = (card: Card, sprite: Sprite) => {
   processCardEffect(card, player, currentJam)
   cardPlayed.play()
 
+  player.status.mind -= 0.7 * Math.random()
+  player.status.energy -= Math.random()
+  player.status.health -= Math.random()
+
   gameState = GameState.EFFECTS
 }
 

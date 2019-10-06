@@ -5,7 +5,7 @@ import { Container, Graphics, Text, Sprite } from "pixi.js";
 import { style } from "../style";
 import { loader } from "../../core/loader";
 import { soundPractice } from "../cards/cardList";
-import { newGameSound } from "../sounds/cardSounds";
+import { newGameSound, newJamHover } from "../sounds/cardSounds";
 import { newGame } from "../game";
 
 export const jamEnd = (jam: GameJam, player: Player, container: Container) => {
@@ -52,6 +52,7 @@ export const jamEnd = (jam: GameJam, player: Player, container: Container) => {
     anotherBtn.texture = loader.resources['anotherHover'].texture
     anotherBtn.scale.x = 1.3
     anotherBtn.scale.y = 1.3
+    newJamHover.play()
   })
 
   anotherBtn.on('pointerout', () => {

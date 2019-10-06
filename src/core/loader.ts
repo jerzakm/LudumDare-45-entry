@@ -27,6 +27,9 @@ export const loadAssets = () => {
         .add('card_marieCondo', 'assets/card_marieCondo.png')
         .add('card_characterArt', 'assets/card_characterArt.png')
         .add('card_happyTrees', 'assets/card_happyTrees.png')
+        .add('card_makeNoise', 'assets/card_makeNoise.png')
+        .add('card_walkInAPark', 'assets/card_walkInAPark.png')
+        .add('card_askFriend', 'assets/card_askFriend.png')
         .load(() => {
           resolve()
         })
