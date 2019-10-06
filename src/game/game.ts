@@ -30,13 +30,31 @@ export const newGame = (jamNumber = 45) => {
   currentJam = new GameJam(jamNumber)
   currentJamContainer = makeGameUi(currentJam)
   gameState = GameState.DRAWING
-  debug()
+
+  // debug()
 }
 
 const debug = () => {
-  currentJam.timer = 240
+  currentJam.timer = 60
   currentJam.practiceRound = 0
   updateTimeLeftCounter(currentJam)
+  currentJam.playerGame.fun = Math.random() * 10
+  currentJam.playerGame.graphics = Math.random() * 10
+  currentJam.playerGame.innovation = Math.random() * 10
+  currentJam.playerGame.playable = Math.random() * 10
+  currentJam.playerGame.sound = Math.random() * 10
+  currentJam.playerGame.theme = Math.random() * 10
+
+  player.skills.art = Math.random() * 10
+  player.skills.coding = Math.random() * 10
+  player.skills.gameDesign = Math.random() * 10
+  player.skills.organization = Math.random() * 10
+  player.skills.popularity = Math.random() * 10
+  player.skills.sound = Math.random() * 10
+
+  player.status.energy = Math.random() * 10
+  player.status.health = Math.random() * 10
+  player.status.mind = Math.random() * 10
 }
 
 const gameLoop = (delta: number) => {
@@ -94,11 +112,10 @@ export const playCard = (card: Card, sprite: Sprite) => {
   if (card.playerStatus.energy > 0 || card.playerStatus.health > 0) {
 
   } else {
-    player.status.mind -= Math.random() * (card.time / 20)
+    player.status.mind -= Math.random() * (card.time / 40)
     player.status.energy -= Math.random() * (card.time / 35)
     player.status.health -= Math.random() * (card.time / 60)
   }
-
   gameState = GameState.EFFECTS
 }
 

@@ -25,3 +25,8 @@ export const theme = new Howl({
   volume: 0.22,
   loop: true
 })
+
+export const releaseSound = new Howl({
+  src: ['assets/release.wav'],
+  volume: 1.0
+})

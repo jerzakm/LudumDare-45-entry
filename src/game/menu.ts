@@ -3,6 +3,7 @@ import { loader } from "../core/loader"
 import { stage } from "../core/renderer"
 import { menuColors, style } from "./style"
 import { newGame } from "./game"
+import { newJamHover, newGameSound } from "./sounds/cardSounds"
 
 export const initMenu = () => {
   const container = new Container()
@@ -95,6 +96,34 @@ You may have never made a game before, but you're ready to show the world what y
 
   startBtnContainer.on('pointerdown', () => {
     newGame()
+    newGameSound.play()
+  })
+
+  startBtnContainer.on('pointerover', () => {
+    newJamHover.play()
+    startBtn.clear()
+    startBtn.beginFill(0xFBF3D4)
+    startBtn.lineStyle(10, 0xDD75A4)
+    startBtn.drawRoundedRect(
+      0,
+      description.position.y + description.height + 60,
+      menuBgWidth / 2,
+      80,
+      30)
+    startBtn.endFill()
+    startBtn.lineStyle(0)
+  })
+
+  startBtnContainer.on('pointerout', () => {
+    startBtn.clear()
+    startBtn.beginFill(menuColors.secondary)
+    startBtn.drawRoundedRect(
+      0,
+      description.position.y + description.height + 60,
+      menuBgWidth / 2,
+      80,
+      30)
+    startBtn.endFill()
   })
 
   container.addChild(g)

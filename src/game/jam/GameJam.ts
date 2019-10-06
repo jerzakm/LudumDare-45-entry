@@ -32,10 +32,8 @@ export class GameJam {
 
   private selectTheme = () => {
     let theme = 'Start with nothing'
-    console.log(this.number)
     if (this.number > 45) {
       theme = jamNameList[Math.floor(Math.random() * jamNameList.length)]
-      console.log(theme)
     }
     return theme
   }

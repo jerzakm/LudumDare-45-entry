@@ -6,6 +6,7 @@ import { Sprite } from "pixi.js";
 import { loader } from "../../core/loader";
 import { drawNewCard } from "./cardDraw";
 import { player } from "../game";
+import { releaseSound } from "../sounds/cardSounds";
 
 export const MAX_CARDS = 5
 
