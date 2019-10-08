@@ -1,7 +1,7 @@
 import { GameJam } from "../jam/GameJam";
 import { Container, Graphics, Sprite, Text } from "pixi.js";
 import { colorScheme, style } from "../style";
-import { stage } from "../../core/renderer";
+import { stage, renderer } from "../../core/renderer";
 import { loader } from "../../core/loader";
 import { player } from "../game";
 import { initStatBars } from "./statBars";
@@ -12,7 +12,6 @@ export let cardContainer: Container
 
 export const makeGameUi = (jam: GameJam): Container => {
   const gameUi = new Container()
-
   makeBackground(gameUi)
   makeTitle(gameUi, jam)
   makeTimer(gameUi, jam)
@@ -28,15 +27,20 @@ export const makeGameUi = (jam: GameJam): Container => {
 const initCardContainer = (container: Container) => {
   cardContainer = new Container()
   cardContainer.sortableChildren = true
+  cardContainer.y = 60
   container.addChild(cardContainer)
 }
 
-const stageScale = () => {
-  const x = window.innerWidth / stage.width
-  const y = window.innerHeight / stage.height
-  const scale = x > y ? x : y
+export const stageScale = () => {
+  const x = window.innerWidth / 1920
+  const y = window.innerHeight / 1080
+  const scale = x > y ? y : x
+  const scaleT = x > y ? 'y' : 'x'
   stage.scale.x = scale
   stage.scale.y = scale
+  // renderer.render(stage)
+  renderer.view.width = window.innerWidth
+  renderer.view.height = window.innerHeight
 }
 
 const makeBackground = (container: Container) => {
@@ -46,7 +50,7 @@ const makeBackground = (container: Container) => {
   bg.endFill()
   const bgSuper = new Graphics()
   bgSuper.beginFill(colorScheme.background)
-  bgSuper.drawRect(1920 - 600, 0, 600, 1080)
+  bgSuper.drawRect(1920 - 600, 0, 800, 1080)
   bgSuper.endFill()
 
   bgSuper.beginFill(0x70A5D4)

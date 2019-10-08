@@ -4,6 +4,7 @@ import { renderer, initRenderer, ticker } from "./core/renderer"
 import { loadAssets } from "./core/loader"
 import { startGame, newGame } from "./game/game"
 import { theme } from "./game/sounds/cardSounds"
+import { stageScale } from "./game/ui/uiController"
 
 
 
@@ -22,5 +23,7 @@ const initialize = async () => {
     game.renderLoop(delta)
     stats.end()
   })
+
+  window.onresize = stageScale
 }
 initialize()
